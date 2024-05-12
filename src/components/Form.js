@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Form({ onAddItems }) {
   const [description, setDescription] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [time,setTime] = useState()
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,11 +16,12 @@ export default function Form({ onAddItems }) {
 
     setDescription("");
     setQuantity(1);
+    setTime("");
   }
 
   return (
     <form className="add-form" onSubmit={handleSubmit}>
-      <h3>What do you need for your 😍 trip?</h3>
+      <h3>What are your todays plans😍 ?</h3>
       <select
         value={quantity}
         onChange={(e) => setQuantity(Number(e.target.value))}
@@ -32,10 +34,11 @@ export default function Form({ onAddItems }) {
       </select>
       <input
         type="text"
-        placeholder="Item..."
+        placeholder="plan..."
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
+      <input type="text" placeholder="time dedicate" value={time} onChange={(e)=> setTime(e.target.value)}/>
       <button>Add</button>
     </form>
   );
